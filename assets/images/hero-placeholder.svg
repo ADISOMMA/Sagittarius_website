@@ -1,0 +1,12 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#101010" />
+      <stop offset="100%" stop-color="#333333" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#grad)" />
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" fill="#f28b30" opacity="0.65">
+    Inserire foto hero reale qui
+  </text>
+</svg>
