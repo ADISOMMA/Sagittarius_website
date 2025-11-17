@@ -17,9 +17,11 @@
     <header class="site-header">
       <div class="container">
         <nav class="navbar">
-          <a href="#" class="logo-brand" aria-label="Sagittarius Training Lab">
-            <img src="assets/images/logo-white.svg" alt="Logo Sagittarius Training Lab" class="logo-symbol" />
-            <img src="assets/images/logo-wordmark.svg" alt="Sagittarius Training Lab wordmark" class="logo-wordmark" />
+          <a href="#" class="logo-icon" aria-label="Sagittarius Training Lab">
+            <img src="assets/images/logo-white.svg" alt="Logo Sagittarius Training Lab" />
+          </a>
+          <a href="#" class="logo-wordmark" aria-label="Sagittarius Training Lab">
+            <img src="assets/images/logo-wordmark.svg" alt="Sagittarius Training Lab wordmark" />
           </a>
           <div class="nav-links">
             <a href="#classi">Classi</a>
@@ -28,12 +30,19 @@
             <a href="#dove-siamo">Dove siamo</a>
             <a href="#faq">FAQ</a>
             <a href="#contatti">Contatti</a>
+            <a href="#contatti" class="nav-cta-mobile">Prenota ora</a>
           </div>
           <div class="nav-actions">
             <a href="#contatti" class="btn btn-primary">Prenota ora</a>
           </div>
+          <button class="nav-toggle" aria-label="Apri menù" aria-expanded="false">
+            <span class="line line-top"></span>
+            <span class="line line-mid"></span>
+            <span class="line line-btm"></span>
+          </button>
         </nav>
       </div>
+      <div class="menu-overlay" aria-hidden="true"></div>
     </header>
 
     <main>
@@ -314,11 +323,41 @@
                 Proponiamo classi guidate, percorsi individualizzati e momenti di open gym per trasformare ogni allenamento in un laboratorio concreto di training.
               </p>
               <ul class="about-list">
-                <li><span></span>Coach sempre presenti per tecnica e motivazione quotidiana.</li>
-                <li><span></span>Community compatta che rende ogni sessione un momento di energia condivisa.</li>
-                <li><span></span>Programmi scalabili per livelli, obiettivi e disponibilità di tempo.</li>
-                <li><span></span>Spazio attrezzato per combinare classi guidate e allenamenti in autonomia.</li>
-                <li><span></span>Percorsi pensati per accompagnarti nel lungo periodo.</li>
+                <li>
+                  <span class="about-dot"></span>
+                  <div>
+                    <strong>Coach al tuo fianco</strong>
+                    <p>Team presente in sala ogni giorno per curare tecnica, progressioni e motivazione.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="about-dot"></span>
+                  <div>
+                    <strong>Community che ti sostiene</strong>
+                    <p>Allenati con persone che condividono obiettivi e trasformano ogni sessione in energia positiva.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="about-dot"></span>
+                  <div>
+                    <strong>Programmi scalabili</strong>
+                    <p>Classi e percorsi individualizzati adattati a livello, obiettivi e tempo a disposizione.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="about-dot"></span>
+                  <div>
+                    <strong>Spazio completo</strong>
+                    <p>Attrezzatura curata per combinare classi guidate e allenamenti in autonomia.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="about-dot"></span>
+                  <div>
+                    <strong>Percorsi nel lungo periodo</strong>
+                    <p>Programmazioni pensate per accompagnarti e monitorare i progressi nel tempo.</p>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>

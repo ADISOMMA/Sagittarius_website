@@ -31,6 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
   revealElements.forEach((element) => observer.observe(element));
 
   const smoothLinks = document.querySelectorAll('a[href^="#"]');
+  const navToggle = document.querySelector(".nav-toggle");
+  const menuOverlay = document.querySelector(".menu-overlay");
+
+  const closeMenu = () => {
+    document.body.classList.remove("menu-open");
+    navToggle?.setAttribute("aria-expanded", "false");
+  };
+
+  navToggle?.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("menu-open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  menuOverlay?.addEventListener("click", closeMenu);
+
   smoothLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       const targetId = link.getAttribute("href");
@@ -47,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
         top: offsetTop,
         behavior: "smooth",
       });
+
+      closeMenu();
     });
   });
 });
