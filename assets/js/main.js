@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // -----------------------------
+  // Anno nel footer
+  // -----------------------------
   const yearSlot = document.getElementById("currentYear");
   if (yearSlot) {
     yearSlot.textContent = new Date().getFullYear();
   }
 
+  // -----------------------------
+  // Header che cambia stile allo scroll
+  // -----------------------------
   const header = document.querySelector(".site-header");
   const toggleHeaderState = () => {
     if (!header) return;
@@ -13,39 +19,54 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleHeaderState();
   window.addEventListener("scroll", toggleHeaderState);
 
+  // -----------------------------
+  // FADE-IN / REVEAL CON SCROLL
+  // -----------------------------
   const revealElements = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.2,
-    }
-  );
 
-  revealElements.forEach((element) => observer.observe(element));
+  const handleReveal = () => {
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    revealElements.forEach((el) => {
+      if (el.classList.contains("visible")) return; // già animato
+      const rect = el.getBoundingClientRect();
+      // quando la parte alta dell'elemento entra nell'80% dello schermo, attiva il fade
+      if (rect.top < windowHeight * 0.8) {
+        el.classList.add("visible");
+      }
+    });
+  };
 
+  // chiamiamo subito e ad ogni scroll/resize
+  handleReveal();
+  window.addEventListener("scroll", handleReveal);
+  window.addEventListener("resize", handleReveal);
+
+  // -----------------------------
+  // Menu mobile & smooth scroll
+  // -----------------------------
   const smoothLinks = document.querySelectorAll('a[href^="#"]');
   const navToggle = document.querySelector(".nav-toggle");
   const menuOverlay = document.querySelector(".menu-overlay");
 
   const closeMenu = () => {
     document.body.classList.remove("menu-open");
-    navToggle?.setAttribute("aria-expanded", "false");
+    if (navToggle) {
+      navToggle.setAttribute("aria-expanded", "false");
+    }
   };
 
-  navToggle?.addEventListener("click", () => {
-    const isOpen = document.body.classList.toggle("menu-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
+  if (navToggle) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = document.body.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+  }
 
-  menuOverlay?.addEventListener("click", closeMenu);
+  if (menuOverlay) {
+    menuOverlay.addEventListener("click", closeMenu);
+  }
 
+  // Smooth scroll per tutti i link interni
   smoothLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       const targetId = link.getAttribute("href");
@@ -55,14 +76,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!targetEl) return;
 
       event.preventDefault();
+
       const headerHeight = header ? header.offsetHeight : 0;
-      const offsetTop = targetEl.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+      const offsetTop =
+        targetEl.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
 
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
       });
 
+      // Chiudi il menu mobile dopo il click
       closeMenu();
     });
   });

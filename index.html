@@ -17,29 +17,44 @@
     <header class="site-header">
       <div class="container">
         <nav class="navbar">
-          <a href="#" class="logo-icon" aria-label="Sagittarius Training Lab">
-            <img src="assets/images/logo-white.svg" alt="Logo Sagittarius Training Lab" />
-          </a>
-          <a href="#" class="logo-wordmark" aria-label="Sagittarius Training Lab">
-            <img src="assets/images/logo-wordmark.svg" alt="Sagittarius Training Lab wordmark" />
-          </a>
-          <div class="nav-links">
-            <a href="#classi">Classi</a>
-            <a href="#calendario">Calendario</a>
-            <a href="#chi-siamo">Chi siamo</a>
-            <a href="#dove-siamo">Dove siamo</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contatti">Contatti</a>
-            <a href="#contatti" class="nav-cta-mobile">Prenota ora</a>
+          <div class="navbar-brand">
+            <a href="#hero" class="logo-icon" aria-label="Sagittarius Training Lab">
+              <img src="assets/images/logo-white.svg" alt="Logo Sagittarius Training Lab" />
+            </a>
+            <a href="#hero" class="logo-wordmark" aria-label="Sagittarius Training Lab">
+              <img src="assets/images/logo-wordmark.svg" alt="Sagittarius Training Lab wordmark" />
+            </a>
           </div>
-          <div class="nav-actions">
-            <a href="#contatti" class="btn btn-primary">Prenota ora</a>
+
+          <div class="navbar-menu">
+            <!-- NAV LINKS: aggiunto id per aria-controls -->
+            <div class="nav-links" id="primary-navigation">
+              <a href="#classi">Classi</a>
+              <a href="#calendario">Calendario</a>
+              <a href="#chi-siamo">Chi siamo</a>
+              <a href="#dove-siamo">Dove siamo</a>
+              <a href="#faq">FAQ</a>
+              <a href="#contatti">Contatti</a>
+              <a href="#contatti" class="nav-cta-mobile">Prenota ora</a>
+            </div>
+
+            <div class="nav-actions">
+              <a href="#contatti" class="btn btn-primary">Prenota ora</a>
+            </div>
+
+            <!-- BURGER BUTTON: aggiunti type e aria-controls -->
+            <button
+              class="nav-toggle"
+              type="button"
+              aria-label="Apri menù"
+              aria-expanded="false"
+              aria-controls="primary-navigation"
+            >
+              <span class="line line-top"></span>
+              <span class="line line-mid"></span>
+              <span class="line line-btm"></span>
+            </button>
           </div>
-          <button class="nav-toggle" aria-label="Apri menù" aria-expanded="false">
-            <span class="line line-top"></span>
-            <span class="line line-mid"></span>
-            <span class="line line-btm"></span>
-          </button>
         </nav>
       </div>
       <div class="menu-overlay" aria-hidden="true"></div>
@@ -50,17 +65,21 @@
         <div class="container">
           <div class="hero-content">
             <span class="hero-location">Sagittarius Training Lab · Concordia Sagittaria</span>
-            <h1 class="hero-title">Allenati con disciplina, passione e coach dedicati.</h1>
+            <h1 class="hero-title">Forgia il tuo corpo, libera il tuo potenziale.</h1>
             <p class="hero-text">
-              Prenota una prova guidata, sceglie le classi che ti ispirano e accedi a uno spazio in cui open gym e programmazioni personalizzate convivono.
-              Vivi il training come un laboratorio continuo.
+              Entra in un laboratorio di training dove la disciplina incontra la passione. Offriamo classi guidate,
+              programmazioni su misura e un ambiente che ti spinge a superare ogni limite.
             </p>
             <div class="hero-cta">
               <a href="#contatti" class="btn btn-light">Prenota una prova</a>
               <a href="#classi" class="btn btn-secondary">Guarda le classi</a>
             </div>
-            <p class="hero-proof">Allenamenti guidati, spazio open gym e supporto costante per ogni livello.</p>
-            <p class="hero-hours">Ampia fascia oraria di apertura ogni giorno &middot; orari aggiornabili dal proprietario.</p>
+            <p class="hero-proof">
+              Allenamenti guidati, spazio open gym e supporto costante per ogni livello.
+            </p>
+            <p class="hero-hours">
+              Ampia fascia oraria di apertura ogni giorno &middot; orari aggiornabili dal proprietario.
+            </p>
             <div class="hero-stats">
               <div class="hero-stat">
                 <strong>+200 mq</strong>
@@ -90,32 +109,39 @@
               <img src="assets/images/session.jpg" alt="Benvenuto per ogni membro" />
               <div class="highlight-content">
                 <h3>Accogliamo tutti</h3>
-                <p>Ambiente inclusivo, coach disponibili e percorsi scalabili per ogni esperienza e obiettivo.</p>
+                <p>
+                  Ambiente inclusivo, coach disponibili e percorsi scalabili per ogni esperienza e obiettivo.
+                </p>
               </div>
             </article>
             <article class="highlight-card">
               <img src="assets/images/community.jpg" alt="Community di membri unita" />
               <div class="highlight-content">
                 <h3>Community unita</h3>
-                <p>Connettiti con persone che ti supportano, condividi progressi e resta motivato ogni giornata.</p>
+                <p>
+                  Connettiti con persone che ti supportano, condividi progressi e resta motivato ogni giornata.
+                </p>
               </div>
             </article>
             <article class="highlight-card">
               <img src="assets/images/open-gym.jpg" alt="Divertimento e allenamenti coinvolgenti" />
               <div class="highlight-content">
                 <h3>Allenati con energia</h3>
-                <p>Lavori intensi ma divertenti: esci dal box con entusiasmo e la voglia di tornare subito.</p>
+                <p>
+                  Lavori intensi ma divertenti: esci dal box con entusiasmo e la voglia di tornare subito.
+                </p>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-
       <section class="section reveal" id="classi">
         <div class="container">
           <h2 class="section-title">Classi e programmi</h2>
-          <p class="section-subtitle">Percorsi pensati per obiettivi differenti e livelli progressivi.</p>
+          <p class="section-subtitle">
+            Percorsi pensati per obiettivi differenti e livelli progressivi.
+          </p>
           <div class="classes-grid">
             <article class="class-card">
               <div class="class-media">
@@ -125,10 +151,9 @@
                 <span class="class-level">Intermedi &middot; Avanzati</span>
                 <h3>Crosstraining</h3>
                 <p>
-                  Sessioni che combinano sollevamento pesi, ginnastica funzionale e lavoro metabolico per sviluppare
-                  forza, resistenza e coordinazione.
+                  Corso ad alta intensità per un miglioramento costante di performance e abilità. Integra sollevamento
+                  pesi, ginnastica ed endurance. Richiede un percorso base (On Ramp) per apprendere la metodologia.
                 </p>
-                <a href="#">LEARN MORE</a>
               </div>
             </article>
             <article class="class-card">
@@ -136,13 +161,12 @@
                 <img src="assets/images/weightlifting.jpg" alt="Sessione tecnica di weightlifting" />
               </div>
               <div class="class-content">
-                <span class="class-level">Principianti &middot; Intermedi</span>
+                <span class="class-level">Tutti i livelli</span>
                 <h3>Weightlifting</h3>
                 <p>
-                  Focus sulla tecnica dei sollevamenti olimpici, con progressioni controllate e attenzione a mobilità,
-                  postura e sicurezza sotto bilanciere.
+                  Percorso tecnico per imparare o perfezionare gli esercizi della pesistica (Snatch, Clean & Jerk) e
+                  migliorare forza, potenza e controllo in totale sicurezza.
                 </p>
-                <a href="#">LEARN MORE</a>
               </div>
             </article>
             <article class="class-card">
@@ -151,12 +175,11 @@
               </div>
               <div class="class-content">
                 <span class="class-level">Tutti i livelli</span>
-                <h3>Endurance</h3>
+                <h3>Endurance 🫀</h3>
                 <p>
-                  Lavori di resistenza metabolica e capacità aerobica per migliorare fiato, gestione dello sforzo e
-                  recupero tra i round.
+                  Programma focalizzato sul miglioramento della resistenza con allenamenti di lunga durata e pochi
+                  sovraccarichi, per sviluppare le capacità cardiovascolari.
                 </p>
-                <a href="#">LEARN MORE</a>
               </div>
             </article>
             <article class="class-card">
@@ -165,12 +188,11 @@
               </div>
               <div class="class-content">
                 <span class="class-level">Intermedi</span>
-                <h3>Functional Aesthetic</h3>
+                <h3>Functional Aesthetics ⚡</h3>
                 <p>
-                  Allenamento funzionale orientato all’estetica e al controllo del movimento, composto da circuiti e
-                  lavoro mirato su postura e definizione muscolare.
+                  Ispirato al cross training, combina sovraccarichi, corpo libero ed endurance a media/bassa intensità
+                  per migliorare salute, performance e aspetto fisico.
                 </p>
-                <a href="#">LEARN MORE</a>
               </div>
             </article>
             <article class="class-card">
@@ -179,12 +201,11 @@
               </div>
               <div class="class-content">
                 <span class="class-level">Avanzati</span>
-                <h3>Strength</h3>
+                <h3>Strength 🏋</h3>
                 <p>
-                  Percorso focalizzato sullo sviluppo della forza massimale e relativa, con programmazione su
-                  bilanciere, powerlifting e accessori specifici.
+                  Allenamento dedicato allo sviluppo della forza e della preparazione fisica generale, utilizzando
+                  bilancieri, manubri, kettlebell ed esercizi a corpo libero.
                 </p>
-                <a href="#">LEARN MORE</a>
               </div>
             </article>
             <article class="class-card">
@@ -192,13 +213,12 @@
                 <img src="assets/images/kids.jpg" alt="Classe Crosstraining Kids" />
               </div>
               <div class="class-content">
-                <span class="class-level">Kids</span>
+                <span class="class-level">Kids (8-14 anni)</span>
                 <h3>Crosstraining Kids</h3>
                 <p>
-                  Momenti ludici e di movimento per bambini e ragazzi, con giochi che insegnano coordinazione, agilità e
-                  basi motorie in totale sicurezza.
+                  Programma divertente e dinamico per bambini e ragazzi. Attraverso giochi e sfide su misura,
+                  sviluppano coordinazione, resistenza e fiducia in sé stessi.
                 </p>
-                <a href="#">LEARN MORE</a>
               </div>
             </article>
           </div>
@@ -296,7 +316,6 @@
         </div>
       </section>
 
-
       <section class="section section-join reveal">
         <div class="container join-inner">
           <p class="join-eyebrow">Unisciti a Sagittarius Training Lab</p>
@@ -317,45 +336,56 @@
             </div>
             <div class="about-details">
               <p class="about-eyebrow">Sagittarius Training Lab</p>
-              <h2 class="section-title">Il tuo punto di riferimento per allenarti con metodo</h2>
+              <h2 class="section-title">Dove la disciplina incontra la trasformazione</h2>
               <p>
-                Cresci accanto a coach che ti accompagnano passo dopo passo, in un ambiente che unisce disciplina, passione e libertà di seguire il tuo ritmo.
-                Proponiamo classi guidate, percorsi individualizzati e momenti di open gym per trasformare ogni allenamento in un laboratorio concreto di training.
+                Siamo più di una palestra: siamo un laboratorio di crescita. Qui, coach esperti ti seguono
+                individualmente in un percorso che unisce tecnica rigorosa, passione contagiosa e la libertà di superare
+                i tuoi limiti. Ogni allenamento è un passo verso la versione migliore di te.
               </p>
               <ul class="about-list">
                 <li>
                   <span class="about-dot"></span>
                   <div>
                     <strong>Coach al tuo fianco</strong>
-                    <p>Team presente in sala ogni giorno per curare tecnica, progressioni e motivazione.</p>
+                    <p>
+                      Team presente in sala ogni giorno per curare tecnica, progressioni e motivazione.
+                    </p>
                   </div>
                 </li>
                 <li>
                   <span class="about-dot"></span>
                   <div>
                     <strong>Community che ti sostiene</strong>
-                    <p>Allenati con persone che condividono obiettivi e trasformano ogni sessione in energia positiva.</p>
+                    <p>
+                      Allenati con persone che condividono obiettivi e trasformano ogni sessione in energia positiva.
+                    </p>
                   </div>
                 </li>
                 <li>
                   <span class="about-dot"></span>
                   <div>
                     <strong>Programmi scalabili</strong>
-                    <p>Classi e percorsi individualizzati adattati a livello, obiettivi e tempo a disposizione.</p>
+                    <p>
+                      Classi e percorsi individualizzati adattati a livello, obiettivi e tempo a disposizione.
+                    </p>
                   </div>
                 </li>
                 <li>
                   <span class="about-dot"></span>
                   <div>
                     <strong>Spazio completo</strong>
-                    <p>Attrezzatura curata per combinare classi guidate e allenamenti in autonomia.</p>
+                    <p>
+                      Attrezzatura curata per combinare classi guidate e allenamenti in autonomia.
+                    </p>
                   </div>
                 </li>
                 <li>
                   <span class="about-dot"></span>
                   <div>
                     <strong>Percorsi nel lungo periodo</strong>
-                    <p>Programmazioni pensate per accompagnarti e monitorare i progressi nel tempo.</p>
+                    <p>
+                      Programmazioni pensate per accompagnarti e monitorare i progressi nel tempo.
+                    </p>
                   </div>
                 </li>
               </ul>
@@ -371,7 +401,8 @@
               <p class="location-eyebrow">A 5 minuti dal centro di Concordia Sagittaria</p>
               <h2 class="section-title">Dove trovarci</h2>
               <p>
-                Ci trovi in Via M. Zulian 11, 30023 Concordia Sagittaria (VE). Il box è raggiungibile facilmente da tutta la zona, con parcheggio e collegamenti rapidi.
+                Ci trovi in Via M. Zulian 11, 30023 Concordia Sagittaria (VE). Il box è raggiungibile facilmente da
+                tutta la zona, con parcheggio e collegamenti rapidi.
               </p>
               <a class="btn btn-secondary" href="[LINK_GOOGLE_MAPS]">Apri su Google Maps</a>
             </div>
@@ -426,8 +457,8 @@
               <details>
                 <summary>Ci sono classi per bambini e ragazzi?</summary>
                 <p>
-                  Il programma Crosstraining Kids propone giochi, percorsi e movimenti di base per sviluppare coordinazione
-                  e fiducia in un contesto divertente e sicuro.
+                  Il programma Crosstraining Kids propone giochi, percorsi e movimenti di base per sviluppare
+                  coordinazione e fiducia in un contesto divertente e sicuro.
                 </p>
               </details>
               <details>
@@ -441,10 +472,11 @@
           </div>
         </div>
       </section>
-    <section class="section section-cta reveal" id="contatti">
+
+      <section class="section section-cta reveal" id="contatti">
         <div class="container">
           <div class="cta-inner">
-            <h2 class="section-title" style="color: var(--color-light)">
+            <h2 class="section-title">
               Inizia il tuo percorso<br />
               e porta il training a un nuovo livello
             </h2>
@@ -452,10 +484,14 @@
               Scrivici per informazioni su iscrizioni, orari, programmi personalizzati o collaborazioni: ti guideremo
               nel scegliere la soluzione migliore per i tuoi obiettivi.
             </p>
-            <a href="#" class="btn btn-primary" style="background-color: var(--color-primary); color: #fff"
+            <a
+              href="#"
+              class="btn btn-primary"
               >Contattaci ora</a
             >
-            <p style="margin-top: 1rem; font-size: 0.9rem">Ti risponderemo il prima possibile.</p>
+            <p class="cta-subtext">
+              Ti risponderemo il prima possibile.
+            </p>
           </div>
         </div>
       </section>
@@ -505,7 +541,9 @@
             </ul>
           </div>
         </div>
-        <div class="footer-bottom">&copy; <span id="currentYear"></span> Sagittarius Training Lab. Tutti i diritti riservati.</div>
+        <div class="footer-bottom">
+          &copy; <span id="currentYear"></span> Sagittarius Training Lab. Tutti i diritti riservati.
+        </div>
       </div>
     </footer>
 
