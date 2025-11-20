@@ -96,14 +96,16 @@ p {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary); /* Fallback */
+  background-image: linear-gradient(45deg, #f4c26a, #f8d28c);
   color: var(--color-bg);
-  box-shadow: 0 16px 30px rgba(255, 143, 50, 0.35);
+  box-shadow: 0 8px 20px rgba(244, 194, 106, 0.35);
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(244, 194, 106, 0.45);
 }
 
 .btn-secondary {
@@ -732,10 +734,7 @@ details p {
   color: var(--color-light);
 }
 
-.section-cta .btn-primary {
-  background-color: var(--color-primary);
-  color: #fff;
-}
+
 
 .section-cta .cta-subtext {
   margin-top: 1rem;
@@ -1013,9 +1012,7 @@ footer {
   .footer-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 640px) {
   footer {
     text-align: left;
   }
