@@ -97,10 +97,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const cookieBanner = document.getElementById("cookie-banner");
   const acceptBtn = document.getElementById("cookie-accept-btn");
   const declineBtn = document.getElementById("cookie-decline-btn");
+  const manageBtn = document.getElementById("cookie-manage-btn");
+  const mapWrapper = document.querySelector("[data-map-wrapper]");
+  const mapPlaceholder = document.querySelector("[data-map-placeholder]");
+  const enableMapBtn = document.querySelector("[data-enable-map-btn]");
 
   const setCookie = (name, value, days) => {
     const d = new Date();
-    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
     const expires = "expires=" + d.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
   };
@@ -108,10 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const getCookie = (name) => {
     const cname = name + "=";
     const decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
+    const ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
       let c = ca[i];
-      while (c.charAt(0) === ' ') {
+      while (c.charAt(0) === " ") {
         c = c.substring(1);
       }
       if (c.indexOf(cname) === 0) {
@@ -121,27 +125,75 @@ document.addEventListener("DOMContentLoaded", () => {
     return "";
   };
 
-  if (getCookie("cookie_consent") !== "true" && sessionStorage.getItem("cookie_consent_dismissed") !== "true") {
-    if (cookieBanner) {
-      cookieBanner.classList.add("visible");
+  const loadMap = () => {
+    if (!mapWrapper || mapWrapper.querySelector("iframe")) return;
+    const src = mapWrapper.getAttribute("data-map-src");
+    if (!src) return;
+    const iframe = document.createElement("iframe");
+    iframe.title = "Posizione Sagittarius Training Lab";
+    iframe.src = src;
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "no-referrer-when-downgrade";
+    mapWrapper.innerHTML = "";
+    mapWrapper.appendChild(iframe);
+  };
+
+  const hasConsent = () => getCookie("cookie_consent") === "accepted";
+  const hasChoice = () => {
+    const v = getCookie("cookie_consent");
+    return v === "accepted" || v === "declined";
+  };
+
+  const showBanner = () => {
+    if (cookieBanner) cookieBanner.classList.add("visible");
+  };
+
+  const hideBanner = () => {
+    if (cookieBanner) cookieBanner.classList.remove("visible");
+  };
+
+  const applyConsentState = () => {
+    if (hasConsent()) {
+      loadMap();
+    } else if (mapPlaceholder && mapWrapper && !mapWrapper.querySelector("[data-map-placeholder]")) {
+      mapWrapper.innerHTML = "";
+      mapWrapper.appendChild(mapPlaceholder);
     }
+  };
+
+  if (!hasChoice()) {
+    showBanner();
+  } else {
+    applyConsentState();
   }
 
   if (acceptBtn) {
     acceptBtn.addEventListener("click", () => {
-      setCookie("cookie_consent", "true", 365);
-      if (cookieBanner) {
-        cookieBanner.classList.remove("visible");
-      }
+      setCookie("cookie_consent", "accepted", 365);
+      hideBanner();
+      loadMap(); // carica subito la mappa dopo il consenso
     });
   }
 
   if (declineBtn) {
     declineBtn.addEventListener("click", () => {
-      sessionStorage.setItem("cookie_consent_dismissed", "true");
-      if (cookieBanner) {
-        cookieBanner.classList.remove("visible");
-      }
+      setCookie("cookie_consent", "declined", 365);
+      hideBanner();
+      applyConsentState();
+    });
+  }
+
+  if (enableMapBtn) {
+    enableMapBtn.addEventListener("click", () => {
+      setCookie("cookie_consent", "accepted", 365);
+      hideBanner();
+      loadMap(); // fallback: carica subito la mappa anche se i cookie fossero bloccati
+    });
+  }
+
+  if (manageBtn) {
+    manageBtn.addEventListener("click", () => {
+      showBanner();
     });
   }
 });
