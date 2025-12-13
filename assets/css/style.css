@@ -907,6 +907,17 @@ footer {
   display: block;
 }
 
+.legal-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.legal-logo-wordmark img {
+  height: 26px;
+  display: block;
+}
+
 /* Schedule */
 
 .schedule-grid {
