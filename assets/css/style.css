@@ -1,6 +1,6 @@
 :root {
-  --color-primary: #f4c26a;
-  --color-primary-dark: #d8a147;
+  --color-primary: #8b0a0a;
+  --color-primary-dark: #6f0808;
   --color-bg: #070708;
   --color-surface: #131316;
   --color-contrast: #1d1d22;
@@ -97,15 +97,15 @@ p {
 
 .btn-primary {
   background-color: var(--color-primary); /* Fallback */
-  background-image: linear-gradient(45deg, #f4c26a, #f8d28c);
-  color: var(--color-bg);
-  box-shadow: 0 8px 20px rgba(244, 194, 106, 0.35);
+  background-image: linear-gradient(45deg, #7b0909, #a30d0d);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(139, 10, 10, 0.35);
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(244, 194, 106, 0.45);
+  box-shadow: 0 12px 25px rgba(139, 10, 10, 0.45);
 }
 
 .btn-secondary {
@@ -117,7 +117,7 @@ p {
 .btn-secondary:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
-  background-color: rgba(244, 194, 106, 0.1);
+  background-color: rgba(139, 10, 10, 0.1);
 }
 
 main {
@@ -157,19 +157,23 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 1.1rem 0;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex: 0 0 auto;
 }
 
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .logo-icon img {
@@ -184,17 +188,30 @@ main {
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
-  font-size: 0.78rem;
+  gap: clamp(0.7rem, 1vw, 1.25rem);
+  font-size: clamp(0.68rem, 0.8vw, 0.78rem);
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 0;
 }
 
 .nav-links a {
   position: relative;
   padding-bottom: 0.15rem;
   transition: color 0.2s ease;
+}
+
+.nav-links a:focus-visible,
+.nav-actions .btn:focus-visible,
+.btn:focus-visible,
+.nav-toggle:focus-visible,
+.footer-manage-cookies:focus-visible,
+details summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
 .nav-links a::after {
@@ -224,6 +241,12 @@ main {
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
+  flex: 0 0 auto;
+}
+
+.nav-actions .btn {
+  padding: 0.8rem 1.35rem;
+  white-space: nowrap;
 }
 
 .nav-cta-mobile {
@@ -356,13 +379,12 @@ body.menu-open .menu-overlay {
   transform: translateY(-2px);
 }
 
-.hero-proof,
 .hero-hours {
   color: rgba(255, 255, 255, 0.65);
 }
 
 .hero-hours {
-  margin-top: 0.3rem;
+  margin: 0;
 }
 
 .hero-stats {
@@ -752,7 +774,7 @@ details p {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(255, 143, 50, 0.2), transparent 60%);
+  background: radial-gradient(circle, rgba(139, 10, 10, 0.22), transparent 60%);
 }
 
 .cta-inner {
@@ -967,11 +989,11 @@ footer {
 }
 
 .slot-wl {
-  background-color: rgba(214, 107, 31, 0.35);
+  background-color: rgba(139, 10, 10, 0.28);
 }
 
 .slot-mix {
-  background-color: rgba(255, 143, 50, 0.2);
+  background-color: rgba(139, 10, 10, 0.16);
 }
 
 .legend-list {
@@ -1001,6 +1023,22 @@ footer {
 
   .faq-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1080px) {
+  .navbar {
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 0.85rem;
+    font-size: 0.7rem;
+  }
+
+  .nav-actions .btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.72rem;
   }
 }
 
@@ -1038,14 +1076,17 @@ footer {
     left: 0;
     width: 100%;
     height: 100vh;
-    padding: 5rem 2rem;
+    padding: 6.5rem 2rem 2rem;
     background-color: #030303;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
     text-align: center;
-    transform: translateY(-100%);
-    transition: transform 0.45s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transform: translateY(-1.5rem);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.3s ease,
+      visibility 0s linear 0.4s;
     z-index: 1100;
   }
 
@@ -1073,6 +1114,9 @@ footer {
 
   body.menu-open .nav-links {
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.3s ease;
   }
 
   body.menu-open .nav-toggle .line-top {
@@ -1093,7 +1137,7 @@ footer {
     align-items: center;
     padding: 0.9rem 1.4rem;
     background-color: var(--color-primary);
-    color: #0a0a0b;
+    color: #fff;
     border-radius: 999px;
     text-transform: uppercase;
     font-weight: 700;
